@@ -1,0 +1,74 @@
+
+package com.company;
+
+import java.io.*;
+import java.lang.*;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+      abc list =new abc();
+      list.insertatbeg(12);
+      list.insertatbeg(13);
+      list.insertatbeg(14);
+      list.display();
+      list.deltefrombeg();
+      list.display();
+
+    }
+}
+class node {
+    int data ;
+    node next ;
+    node prev;
+
+    public node(int data) {
+        this.data = data;
+        this.next=null;
+        this.next=null;
+    }
+}
+class abc{
+      public node head=null;
+      public node tail=null;
+    public void insertatbeg(int data){
+     node newnode =new node(data);
+     if(head==null){
+         head=newnode;
+         tail=newnode;
+     }
+     else {
+         tail.next=newnode;
+         newnode.prev=tail;
+         tail=newnode;
+
+     }
+
+    }
+      public void display(){
+          node current =head;
+          if(head==null){
+              System.out.println("list is empty");
+              return;
+          }
+          else{
+              System.out.println("nodes of doubly linked list ");
+              while (current!=null){
+                  System.out.print(current.data+" ");
+                  current=current.next;
+              }
+          }
+      }
+      public void deltefrombeg(){
+        if(head!=tail){
+            head=head.next;
+            head.prev=null;
+        }
+        else {
+            head=tail=null;
+        }
+      }
+}
+
